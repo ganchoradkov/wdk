@@ -44,14 +44,14 @@ export default class WdkManager {
      * same type bound to the same blockchain with the same label).
      *
      * @see {@link IWalletAccountWithProtocols#registerProtocol} to register protocols only for specific accounts.
-     * @template {typeof SwapProtocol | typeof BridgeProtocol | typeof LendingProtocol} P
+     * @template {typeof SwapProtocol | typeof BridgeProtocol | typeof LendingProtocol | typeof FiatProtocol} P
      * @param {string} blockchain - The name of the blockchain the protocol must be bound to. Can be any string (e.g., "ethereum").
      * @param {string} label - The label.
      * @param {P} Protocol - The protocol class.
      * @param {ConstructorParameters<P>[1]} config - The protocol configuration.
      * @returns {WdkManager} The wdk manager.
      */
-    registerProtocol<P extends typeof SwapProtocol | typeof BridgeProtocol | typeof LendingProtocol>(blockchain: string, label: string, Protocol: P, config: ConstructorParameters<P>[1]): WdkManager;
+    registerProtocol<P extends typeof SwapProtocol | typeof BridgeProtocol | typeof LendingProtocol | typeof FiatProtocol>(blockchain: string, label: string, Protocol: P, config: ConstructorParameters<P>[1]): WDK;
     /**
      * Registers a new middleware to the wdk manager.
      *
@@ -97,11 +97,12 @@ export default class WdkManager {
     /** @private */
     private _registerProtocols;
 }
-export type IWalletAccount = import("@wdk/wallet").IWalletAccount;
-export type FeeRates = import("@wdk/wallet").FeeRates;
+export type IWalletAccount = import("@tetherto/wdk-wallet").IWalletAccount;
+export type FeeRates = import("@tetherto/wdk-wallet").FeeRates;
 export type IWalletAccountWithProtocols = import("./wallet-account-with-protocols.js").IWalletAccountWithProtocols;
 export type MiddlewareFunction = <A extends IWalletAccount>(account: A) => Promise<void>;
-import WalletManager from "@wdk/wallet";
-import { SwapProtocol } from "@wdk/wallet/protocols";
-import { BridgeProtocol } from "@wdk/wallet/protocols";
-import { LendingProtocol } from "@wdk/wallet/protocols";
+import WalletManager from "@tetherto/wdk-wallet";
+import { SwapProtocol } from "@tetherto/wdk-wallet/protocols";
+import { BridgeProtocol } from "@tetherto/wdk-wallet/protocols";
+import { LendingProtocol } from "@tetherto/wdk-wallet/protocols";
+import { FiatProtocol } from "@tetherto/wdk-wallet/protocols";
