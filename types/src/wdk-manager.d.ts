@@ -109,7 +109,7 @@ export default class WDK extends EventEmitter<any> {
      *
      * @returns {import('@reown/walletkit').WalletKit | null}
      */
-    get walletkit(): import("@reown/walletkit").WalletKit | null;
+    get walletkit(): import("@reown/walletkit").default | null;
     /**
      * The WalletConnect Pay client. Available after initWalletConnect with payConfig.
      *

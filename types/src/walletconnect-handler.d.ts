@@ -6,7 +6,7 @@
  * @property {string} projectId
  * @property {{ name: string, description: string, url: string, icons: string[] }} metadata
  * @property {string} [relayUrl]
- * @property {{ appId: string, apiKey: string, baseUrl?: string }} [payConfig]
+ * @property {{ appId: string, apiKey?: string, baseUrl?: string }} [payConfig]
  * @property {object} [signConfig]
  */
 /**
@@ -29,7 +29,7 @@ export default class WalletConnectHandler {
     /**
      * @returns {import('@reown/walletkit').WalletKit | null}
      */
-    get walletkit(): import("@reown/walletkit").WalletKit | null;
+    get walletkit(): import("@reown/walletkit").default | null;
     /**
      * @returns {import('@reown/walletkit').IWalletKitPay | null}
      */
@@ -163,7 +163,7 @@ export type WalletConnectConfig = {
     relayUrl?: string;
     payConfig?: {
         appId: string;
-        apiKey: string;
+        apiKey?: string;
         baseUrl?: string;
     };
     signConfig?: object;
